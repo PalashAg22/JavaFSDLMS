@@ -1,0 +1,201 @@
+[32m2024-03-22 00:32:22.219[0;39m [INFO] com.hexaware.lms.JaFsdLoanMsApplication [main] Starting JaFsdLoanMsApplication using Java 17.0.9 with PID 45248 (D:\J2EE-Workspace\FSD_Training\JA-FSD-LoanMS\target\classes started by navne in D:\J2EE-Workspace\FSD_Training\JA-FSD-LoanMS)
+[32m2024-03-22 00:32:22.222[0;39m [INFO] com.hexaware.lms.JaFsdLoanMsApplication [main] No active profile set, falling back to 1 default profile: "default"
+[32m2024-03-22 00:32:23.499[0;39m [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[32m2024-03-22 00:32:23.632[0;39m [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 119 ms. Found 7 JPA repository interfaces.
+[32m2024-03-22 00:32:24.408[0;39m [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 5000 (http)
+[32m2024-03-22 00:32:24.423[0;39m [INFO] org.apache.catalina.core.StandardService [main] Starting service [Tomcat]
+[32m2024-03-22 00:32:24.423[0;39m [INFO] org.apache.catalina.core.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/10.1.4]
+[32m2024-03-22 00:32:24.572[0;39m [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [main] Initializing Spring embedded WebApplicationContext
+[32m2024-03-22 00:32:24.572[0;39m [INFO] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2287 ms
+[32m2024-03-22 00:32:24.781[0;39m [INFO] org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+[32m2024-03-22 00:32:24.874[0;39m [INFO] org.hibernate.Version [main] HHH000412: Hibernate ORM core version 6.1.6.Final
+[32m2024-03-22 00:32:25.106[0;39m [WARN] org.hibernate.orm.deprecation [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+[32m2024-03-22 00:32:25.267[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+[32m2024-03-22 00:32:34.325[0;39m [INFO] com.zaxxer.hikari.pool.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4cc4d454
+[32m2024-03-22 00:32:34.331[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+[32m2024-03-22 00:32:34.377[0;39m [INFO] SQL dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[32m2024-03-22 00:32:34.378[0;39m [WARN] org.hibernate.orm.deprecation [main] HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[32m2024-03-22 00:32:42.422[0;39m [INFO] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[32m2024-03-22 00:32:42.452[0;39m [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[32m2024-03-22 00:32:43.175[0;39m [INFO] com.hexaware.lms.config.SecurityConfig [main] Inside authenticationManager
+[32m2024-03-22 00:32:43.193[0;39m [INFO] com.hexaware.lms.config.SecurityConfig [main] inside my authenticationProvider()
+[32m2024-03-22 00:32:43.211[0;39m [INFO] com.hexaware.lms.config.SecurityConfig [main] returning new UserInfoUserDetailsService object
+[32m2024-03-22 00:32:43.689[0;39m [WARN] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[32m2024-03-22 00:32:44.669[0;39m [INFO] org.springframework.security.web.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@71d3dfd5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7536ef0f, org.springframework.security.web.context.SecurityContextHolderFilter@17179a7e, org.springframework.security.web.header.HeaderWriterFilter@4474c514, org.springframework.web.filter.CorsFilter@234dfc8e, org.springframework.security.web.authentication.logout.LogoutFilter@5d956649, com.hexaware.lms.filter.JwtAuthFilter@1abb719a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5ce593bc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5b6789cf, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@15311af2, org.springframework.security.web.session.SessionManagementFilter@6945fdb8, org.springframework.security.web.access.ExceptionTranslationFilter@22277482, org.springframework.security.web.access.intercept.AuthorizationFilter@4158b72f]
+[32m2024-03-22 00:32:45.093[0;39m [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 5000 (http) with context path ''
+[32m2024-03-22 00:32:45.105[0;39m [INFO] com.hexaware.lms.JaFsdLoanMsApplication [main] Started JaFsdLoanMsApplication in 23.497 seconds (process running for 24.402)
+[32m2024-03-22 00:33:32.129[0;39m [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-5000-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[32m2024-03-22 00:33:32.129[0;39m [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-5000-exec-2] Initializing Servlet 'dispatcherServlet'
+[32m2024-03-22 00:33:32.131[0;39m [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-5000-exec-2] Completed initialization in 2 ms
+[32m2024-03-22 00:33:32.164[0;39m [INFO] com.hexaware.lms.filter.JwtAuthFilter [http-nio-5000-exec-2] Request received in JwtAuthFilter
+[32m2024-03-22 00:33:32.164[0;39m [INFO] com.hexaware.lms.filter.JwtAuthFilter [http-nio-5000-exec-2] AuthFilter: null
+[32m2024-03-22 00:34:04.042[0;39m [INFO] com.hexaware.lms.filter.JwtAuthFilter [http-nio-5000-exec-1] Request received in JwtAuthFilter
+[32m2024-03-22 00:34:04.043[0;39m [INFO] com.hexaware.lms.filter.JwtAuthFilter [http-nio-5000-exec-1] AuthFilter: null
+[32m2024-03-22 00:34:04.066[0;39m [INFO] com.hexaware.lms.controller.PublicEndpoints [http-nio-5000-exec-1] Customer is logged In
+[32m2024-03-22 00:34:04.067[0;39m [INFO] com.hexaware.lms.service.LoanTypeServiceImpl [http-nio-5000-exec-1] Viewing all available Loan Types
+[32m2024-03-22 00:34:07.194[0;39m [INFO] com.hexaware.lms.filter.JwtAuthFilter [http-nio-5000-exec-5] Request received in JwtAuthFilter
+[32m2024-03-22 00:34:07.194[0;39m [INFO] com.hexaware.lms.filter.JwtAuthFilter [http-nio-5000-exec-5] AuthFilter: null
+[32m2024-03-22 00:54:41.455[0;39m [INFO] org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin [RMI TCP Connection(26)-127.0.0.1] Application shutdown requested.
+[32m2024-03-22 00:54:41.490[0;39m [INFO] org.apache.catalina.core.StandardService [RMI TCP Connection(26)-127.0.0.1] Stopping service [Tomcat]
+[32m2024-03-22 00:54:41.494[0;39m [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [RMI TCP Connection(26)-127.0.0.1] Destroying Spring FrameworkServlet 'dispatcherServlet'
+[32m2024-03-22 00:54:41.500[0;39m [WARN] org.apache.catalina.loader.WebappClassLoaderBase [RMI TCP Connection(26)-127.0.0.1] The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.9/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.9/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.9/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.9/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.9/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.9/java.lang.Thread.run(Thread.java:840)
+[32m2024-03-22 00:54:41.521[0;39m [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [RMI TCP Connection(26)-127.0.0.1] Closing JPA EntityManagerFactory for persistence unit 'default'
+[32m2024-03-22 00:54:41.525[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(26)-127.0.0.1] HikariPool-1 - Shutdown initiated...
+[32m2024-03-22 00:54:42.800[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(26)-127.0.0.1] HikariPool-1 - Shutdown completed.
+[32m2024-03-22 07:26:44.327[0;39m [INFO] com.hexaware.lms.JaFsdLoanMsApplication [main] Starting JaFsdLoanMsApplication using Java 17.0.9 with PID 81652 (D:\J2EE-Workspace\FSD_Training\JA-FSD-LoanMS\target\classes started by navne in D:\J2EE-Workspace\FSD_Training\JA-FSD-LoanMS)
+[32m2024-03-22 07:26:44.330[0;39m [INFO] com.hexaware.lms.JaFsdLoanMsApplication [main] No active profile set, falling back to 1 default profile: "default"
+[32m2024-03-22 07:26:45.205[0;39m [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[32m2024-03-22 07:26:45.302[0;39m [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 88 ms. Found 7 JPA repository interfaces.
+[32m2024-03-22 07:26:45.970[0;39m [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 5000 (http)
+[32m2024-03-22 07:26:45.981[0;39m [INFO] org.apache.catalina.core.StandardService [main] Starting service [Tomcat]
+[32m2024-03-22 07:26:45.981[0;39m [INFO] org.apache.catalina.core.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/10.1.4]
+[32m2024-03-22 07:26:46.113[0;39m [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [main] Initializing Spring embedded WebApplicationContext
+[32m2024-03-22 07:26:46.113[0;39m [INFO] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1731 ms
+[32m2024-03-22 07:26:46.312[0;39m [INFO] org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+[32m2024-03-22 07:26:46.396[0;39m [INFO] org.hibernate.Version [main] HHH000412: Hibernate ORM core version 6.1.6.Final
+[32m2024-03-22 07:26:46.611[0;39m [WARN] org.hibernate.orm.deprecation [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+[32m2024-03-22 07:26:46.769[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+[32m2024-03-22 07:26:52.966[0;39m [INFO] com.zaxxer.hikari.pool.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2fd4312a
+[32m2024-03-22 07:26:52.971[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+[32m2024-03-22 07:26:53.021[0;39m [INFO] SQL dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[32m2024-03-22 07:26:53.021[0;39m [WARN] org.hibernate.orm.deprecation [main] HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[32m2024-03-22 07:27:00.907[0;39m [INFO] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[32m2024-03-22 07:27:00.936[0;39m [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[32m2024-03-22 07:27:01.601[0;39m [INFO] com.hexaware.lms.config.SecurityConfig [main] Inside authenticationManager
+[32m2024-03-22 07:27:01.620[0;39m [INFO] com.hexaware.lms.config.SecurityConfig [main] inside my authenticationProvider()
+[32m2024-03-22 07:27:01.638[0;39m [INFO] com.hexaware.lms.config.SecurityConfig [main] returning new UserInfoUserDetailsService object
+[32m2024-03-22 07:27:02.046[0;39m [WARN] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[32m2024-03-22 07:27:02.953[0;39m [INFO] org.springframework.security.web.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@72c8de78, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@22912968, org.springframework.security.web.context.SecurityContextHolderFilter@7f1581bb, org.springframework.security.web.header.HeaderWriterFilter@42c2a1da, org.springframework.web.filter.CorsFilter@38e100ab, org.springframework.security.web.authentication.logout.LogoutFilter@5c1605e2, com.hexaware.lms.filter.JwtAuthFilter@3304362e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2dac4d04, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@367a245e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@616b2b2, org.springframework.security.web.session.SessionManagementFilter@7ec63b9a, org.springframework.security.web.access.ExceptionTranslationFilter@23674e3d, org.springframework.security.web.access.intercept.AuthorizationFilter@11c82829]
+[32m2024-03-22 07:27:03.383[0;39m [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 5000 (http) with context path ''
+[32m2024-03-22 07:27:03.392[0;39m [INFO] com.hexaware.lms.JaFsdLoanMsApplication [main] Started JaFsdLoanMsApplication in 19.592 seconds (process running for 20.44)
+[32m2024-03-22 07:43:19.201[0;39m [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-5000-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[32m2024-03-22 07:43:19.202[0;39m [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-5000-exec-1] Initializing Servlet 'dispatcherServlet'
+[32m2024-03-22 07:43:19.204[0;39m [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-5000-exec-1] Completed initialization in 2 ms
+[32m2024-03-22 07:43:19.229[0;39m [INFO] com.hexaware.lms.filter.JwtAuthFilter [http-nio-5000-exec-1] Request received in JwtAuthFilter
+[32m2024-03-22 07:43:19.229[0;39m [INFO] com.hexaware.lms.filter.JwtAuthFilter [http-nio-5000-exec-1] AuthFilter: null
+[32m2024-03-22 07:43:19.270[0;39m [INFO] com.hexaware.lms.controller.PublicEndpoints [http-nio-5000-exec-1] Customer is logged In
+[32m2024-03-22 07:43:19.270[0;39m [INFO] com.hexaware.lms.service.LoanTypeServiceImpl [http-nio-5000-exec-1] Viewing all available Loan Types
+[32m2024-03-22 07:44:00.379[0;39m [INFO] com.hexaware.lms.filter.JwtAuthFilter [http-nio-5000-exec-3] Request received in JwtAuthFilter
+[32m2024-03-22 07:44:00.380[0;39m [INFO] com.hexaware.lms.filter.JwtAuthFilter [http-nio-5000-exec-3] AuthFilter: null
+[32m2024-03-22 07:55:20.864[0;39m [INFO] org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin [RMI TCP Connection(32)-127.0.0.1] Application shutdown requested.
+[32m2024-03-22 07:55:20.881[0;39m [INFO] org.apache.catalina.core.StandardService [RMI TCP Connection(32)-127.0.0.1] Stopping service [Tomcat]
+[32m2024-03-22 07:55:20.896[0;39m [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [RMI TCP Connection(32)-127.0.0.1] Destroying Spring FrameworkServlet 'dispatcherServlet'
+[32m2024-03-22 07:55:20.901[0;39m [WARN] org.apache.catalina.loader.WebappClassLoaderBase [RMI TCP Connection(32)-127.0.0.1] The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.9/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.9/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.9/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.9/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.9/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.9/java.lang.Thread.run(Thread.java:840)
+[32m2024-03-22 07:55:20.910[0;39m [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [RMI TCP Connection(32)-127.0.0.1] Closing JPA EntityManagerFactory for persistence unit 'default'
+[32m2024-03-22 07:55:20.913[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(32)-127.0.0.1] HikariPool-1 - Shutdown initiated...
+[32m2024-03-22 07:55:21.825[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(32)-127.0.0.1] HikariPool-1 - Shutdown completed.
+[32m2024-03-22 07:55:25.337[0;39m [INFO] com.hexaware.lms.JaFsdLoanMsApplication [main] Starting JaFsdLoanMsApplication using Java 17.0.9 with PID 29928 (D:\J2EE-Workspace\FSD_Training\JA-FSD-LoanMS\target\classes started by navne in D:\J2EE-Workspace\FSD_Training\JA-FSD-LoanMS)
+[32m2024-03-22 07:55:25.340[0;39m [INFO] com.hexaware.lms.JaFsdLoanMsApplication [main] No active profile set, falling back to 1 default profile: "default"
+[32m2024-03-22 07:55:26.250[0;39m [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[32m2024-03-22 07:55:26.349[0;39m [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 90 ms. Found 7 JPA repository interfaces.
+[32m2024-03-22 07:55:27.056[0;39m [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 5000 (http)
+[32m2024-03-22 07:55:27.072[0;39m [INFO] org.apache.catalina.core.StandardService [main] Starting service [Tomcat]
+[32m2024-03-22 07:55:27.073[0;39m [INFO] org.apache.catalina.core.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/10.1.4]
+[32m2024-03-22 07:55:27.207[0;39m [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [main] Initializing Spring embedded WebApplicationContext
+[32m2024-03-22 07:55:27.207[0;39m [INFO] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1813 ms
+[32m2024-03-22 07:55:27.392[0;39m [INFO] org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+[32m2024-03-22 07:55:27.469[0;39m [INFO] org.hibernate.Version [main] HHH000412: Hibernate ORM core version 6.1.6.Final
+[32m2024-03-22 07:55:27.683[0;39m [WARN] org.hibernate.orm.deprecation [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+[32m2024-03-22 07:55:27.839[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+[32m2024-03-22 07:55:33.160[0;39m [INFO] com.zaxxer.hikari.pool.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2570b316
+[32m2024-03-22 07:55:33.164[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+[32m2024-03-22 07:55:33.194[0;39m [INFO] SQL dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[32m2024-03-22 07:55:33.195[0;39m [WARN] org.hibernate.orm.deprecation [main] HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[32m2024-03-22 07:55:41.802[0;39m [INFO] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[32m2024-03-22 07:55:41.819[0;39m [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[32m2024-03-22 07:55:42.567[0;39m [INFO] com.hexaware.lms.config.SecurityConfig [main] Inside authenticationManager
+[32m2024-03-22 07:55:42.588[0;39m [INFO] com.hexaware.lms.config.SecurityConfig [main] Inside my authenticationProvider()
+[32m2024-03-22 07:55:42.610[0;39m [INFO] com.hexaware.lms.config.SecurityConfig [main] Inside UserDetailsService bean: Returning new UserInfoUserDetailsService object
+[32m2024-03-22 07:55:43.049[0;39m [WARN] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[32m2024-03-22 07:55:43.134[0;39m [INFO] com.hexaware.lms.config.SecurityConfig [main] Inside SecurityFilterChain
+[32m2024-03-22 07:55:43.935[0;39m [INFO] org.springframework.security.web.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@76a90ecb, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@52d202f0, org.springframework.security.web.context.SecurityContextHolderFilter@6f0ab520, org.springframework.security.web.header.HeaderWriterFilter@4f1a4d61, org.springframework.web.filter.CorsFilter@1ec96512, org.springframework.security.web.authentication.logout.LogoutFilter@616b2b2, com.hexaware.lms.filter.JwtAuthFilter@6287e312, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@648639f1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@210e971e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7fe75649, org.springframework.security.web.session.SessionManagementFilter@24fcfdb, org.springframework.security.web.access.ExceptionTranslationFilter@1988e095, org.springframework.security.web.access.intercept.AuthorizationFilter@3272c5b3]
+[32m2024-03-22 07:55:44.361[0;39m [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 5000 (http) with context path ''
+[32m2024-03-22 07:55:44.371[0;39m [INFO] com.hexaware.lms.JaFsdLoanMsApplication [main] Started JaFsdLoanMsApplication in 19.554 seconds (process running for 20.446)
+[32m2024-03-22 07:56:03.831[0;39m [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-5000-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[32m2024-03-22 07:56:03.831[0;39m [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-5000-exec-2] Initializing Servlet 'dispatcherServlet'
+[32m2024-03-22 07:56:03.833[0;39m [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-5000-exec-2] Completed initialization in 2 ms
+[32m2024-03-22 07:56:03.854[0;39m [INFO] com.hexaware.lms.filter.JwtAuthFilter [http-nio-5000-exec-2] Request received in JwtAuthFilter
+[32m2024-03-22 07:56:03.854[0;39m [INFO] com.hexaware.lms.filter.JwtAuthFilter [http-nio-5000-exec-2] AuthHeader: null
+[32m2024-03-22 07:56:03.887[0;39m [INFO] com.hexaware.lms.controller.PublicEndpoints [http-nio-5000-exec-2] Customer is logged In
+[32m2024-03-22 07:56:03.887[0;39m [INFO] com.hexaware.lms.service.LoanTypeServiceImpl [http-nio-5000-exec-2] Viewing all available Loan Types
+[32m2024-03-22 07:56:07.326[0;39m [INFO] com.hexaware.lms.filter.JwtAuthFilter [http-nio-5000-exec-4] Request received in JwtAuthFilter
+[32m2024-03-22 07:56:07.327[0;39m [INFO] com.hexaware.lms.filter.JwtAuthFilter [http-nio-5000-exec-4] AuthHeader: null
+[32m2024-03-22 08:25:02.455[0;39m [INFO] org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin [RMI TCP Connection(34)-127.0.0.1] Application shutdown requested.
+[32m2024-03-22 08:25:02.470[0;39m [INFO] org.apache.catalina.core.StandardService [RMI TCP Connection(34)-127.0.0.1] Stopping service [Tomcat]
+[32m2024-03-22 08:25:02.472[0;39m [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [RMI TCP Connection(34)-127.0.0.1] Destroying Spring FrameworkServlet 'dispatcherServlet'
+[32m2024-03-22 08:25:02.475[0;39m [WARN] org.apache.catalina.loader.WebappClassLoaderBase [RMI TCP Connection(34)-127.0.0.1] The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.9/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.9/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.9/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.9/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.9/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.9/java.lang.Thread.run(Thread.java:840)
+[32m2024-03-22 08:25:02.476[0;39m [WARN] org.apache.catalina.loader.WebappClassLoaderBase [RMI TCP Connection(34)-127.0.0.1] The web application [ROOT] appears to have started a thread named [HikariPool-1 connection closer] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.9/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.9/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.9/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.9/java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:460)
+ java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1061)
+ java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.9/java.lang.Thread.run(Thread.java:840)
+[32m2024-03-22 08:25:02.477[0;39m [WARN] org.apache.catalina.loader.WebappClassLoaderBase [RMI TCP Connection(34)-127.0.0.1] The web application [ROOT] appears to have started a thread named [HikariPool-1 connection adder] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.9/sun.nio.ch.Net.poll(Native Method)
+ java.base@17.0.9/sun.nio.ch.NioSocketImpl.park(NioSocketImpl.java:186)
+ java.base@17.0.9/sun.nio.ch.NioSocketImpl.timedRead(NioSocketImpl.java:290)
+ java.base@17.0.9/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:314)
+ java.base@17.0.9/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+ java.base@17.0.9/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+ java.base@17.0.9/java.net.Socket$SocketInputStream.read(Socket.java:966)
+ app//com.mysql.cj.protocol.ReadAheadInputStream.fill(ReadAheadInputStream.java:107)
+ app//com.mysql.cj.protocol.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:150)
+ app//com.mysql.cj.protocol.ReadAheadInputStream.read(ReadAheadInputStream.java:180)
+ java.base@17.0.9/java.io.FilterInputStream.read(FilterInputStream.java:132)
+ app//com.mysql.cj.protocol.FullReadInputStream.readFully(FullReadInputStream.java:64)
+ app//com.mysql.cj.protocol.a.SimplePacketReader.readHeaderLocal(SimplePacketReader.java:81)
+ app//com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:63)
+ app//com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:45)
+ app//com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:575)
+ app//com.mysql.cj.protocol.a.NativeProtocol.readServerCapabilities(NativeProtocol.java:536)
+ app//com.mysql.cj.protocol.a.NativeProtocol.beforeHandshake(NativeProtocol.java:423)
+ app//com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1431)
+ app//com.mysql.cj.NativeSession.connect(NativeSession.java:133)
+ app//com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+ app//com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+ app//com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+ app//com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+ app//com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+ app//com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+ app//com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+ app//com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+ app//com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+ app//com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:733)
+ app//com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:712)
+ java.base@17.0.9/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+ java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+ java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.9/java.lang.Thread.run(Thread.java:840)
+[32m2024-03-22 08:25:02.487[0;39m [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [RMI TCP Connection(34)-127.0.0.1] Closing JPA EntityManagerFactory for persistence unit 'default'
+[32m2024-03-22 08:25:02.489[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(34)-127.0.0.1] HikariPool-1 - Shutdown initiated...
+[32m2024-03-22 08:25:05.883[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(34)-127.0.0.1] HikariPool-1 - Shutdown completed.
