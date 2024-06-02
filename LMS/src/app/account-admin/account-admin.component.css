@@ -1,0 +1,77 @@
+.admin-details {
+  max-width: 400px;
+  margin: 10px auto 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.photo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.user-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.photo-icons {
+  display: flex;
+  align-items: center;
+}
+
+.photo-icons label {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.photo-icons label i {
+  font-size: 20px;
+}
+
+.admin-info label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.admin-info input {
+  width: 80%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.buttons button {
+  padding: 8px 16px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.buttons button i {
+  margin-right: 5px;
+}
+
+.buttons button:disabled {
+  background-color: grey;
+  color: white;
+  cursor: not-allowed;
+}
+
+@media(max-width:240px){
+  .buttons button{
+    margin-top: 10px;
+  }
+}
+
+

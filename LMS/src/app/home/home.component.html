@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="search">
+        <div class="search-inside">
+          <input type="search" placeholder="Search here..." name="search" [(ngModel)]="searchValue" class="input-search" (input)="onSearch()">
+        </div>
+      </div>
+      <ng-container *ngIf="searchValue.length === 0 || tempLoanType.length > 0; else noResult">
+    <div class="home-details-container">
+        <div class="home-details" *ngFor="let loan  of (tempLoanType.length>0?tempLoanType:loanTypeList)">
+          <div class="detail-row">
+            <span class="detail-label">LoanType Number:</span>
+            <span>{{ loan.loanTypeId }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Loan Type:</span>
+            <span>{{ loan.loanTypeName }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Management Fees:</span>
+            <span>{{ loan.loanManagementFees }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Estd. Interest Rate:</span>
+            <span>{{ loan.loanInterestBaseRate}}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label"></span>
+            <span><button type="button" class="btn" (click)="applyLoan()">Apply Now</button></span>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+</div>
+<ng-template #noResult>
+    <div style="font-weight: bold; text-align: center; margin-top: 20vh; font-size: 24px;">
+      <p>No LoanType found</p>
+    </div>
+  </ng-template>

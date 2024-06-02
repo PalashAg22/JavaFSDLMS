@@ -1,0 +1,85 @@
+<div class="admin-details">
+  <h2>Admin Details</h2>
+  <div class="admin-info">
+    <div class="photo-container">
+      <img
+        [src]="(admin.profileImage !== null && admin.profileImage!== 'null') ? admin.image : 'assets/image/defaultProfile.webp'"
+        alt="User Photo" class="user-photo" (click)="onUpdateProfile($event, admin.profileImage, admin.userId)">
+      <div class="photo-icons">
+        <label class="update-icon">
+          <input type="file" style="display:none" #fileInput
+            (change)="onFileSelected($event, fileInput, admin.profileImage, admin.userId)" accept="image/*">
+          <i class="fa fa-edit"></i>
+          <span (click)="fileInput.click()"></span>
+        </label>
+        <label class="remove-icon" (click)="onDeleteFile(admin.profileImage, admin.userId)">
+          <i class="fa fa-trash"></i>
+          <span></span>
+        </label>
+      </div>
+    </div>
+
+    <label for="adminId">Admin ID:</label>
+    <input type="number" id="adminId" [(ngModel)]="admin.userId" disabled>
+
+    <label for="adminFirstName">First Name:</label>
+    <input type="text" id="adminFirstName" name="adminFirstName" [(ngModel)]="admin.firstName" [disabled]="!editMode"
+      #adminFirstName="ngModel" required>
+    <div *ngIf="adminFirstName.errors?.['required']" style="color:red;">First Name is required*</div>
+
+    <label for="adminLastName">Last Name:</label>
+    <input type="text" id="adminLastName" name="adminLastName" [(ngModel)]="admin.lastName" [disabled]="!editMode"
+      #adminLastName="ngModel" required>
+    <div *ngIf="adminLastName.errors?.['required']" style="color:red;">Last Name is required*</div>
+
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="number" id="phoneNumber" name="phoneNumber" [(ngModel)]="admin.phoneNumber" [disabled]="!editMode"
+      #phoneNumber="ngModel" required>
+    <div *ngIf="phoneNumber.errors?.['required']" style="color:red;">Phone Number is required*</div>
+
+    <label for="dateOfBirth">Date of Birth:</label>
+    <input type="date" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="admin.dateOfBirth" [disabled]="!editMode"
+      #dateOfBirth="ngModel" required>
+    <div *ngIf="dateOfBirth.errors?.['required']" style="color:red;">*</div>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" [(ngModel)]="admin.email" [disabled]="!editMode" #email="ngModel"
+      pattern="[a-zA-Z0-9._%+-]+@hexaware\.com">
+    <div *ngIf="email.errors?.['pattern']" style="color: red;">Invalid email format</div>
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" [(ngModel)]="admin.password" [disabled]="!editMode"
+      #password="ngModel" required minlength="8">
+    <div *ngIf="password.errors?.['minlength']" style="color:red;">Password Must be atleast 8 characters long</div>
+  <label for="gender">Gender:</label>
+  <input type="text" id="gender" name="gender" [(ngModel)]="admin.gender" [disabled]="!editMode" #gender="ngModel"
+    required>
+  <div *ngIf="gender.errors?.['required']" style="color:red;">*</div>
+  <label for="address">Address:</label>
+  <input type="text" id="address" name="address" [(ngModel)]="admin.address" [disabled]="!editMode" #address="ngModel"
+    required>
+  <div *ngIf="address.errors?.['required']" style="color:red;">*</div>
+  <label for="city">City:</label>
+  <input type="text" id="city" name="city" [(ngModel)]="admin.city" [disabled]="!editMode" #city="ngModel"
+    required>
+  <div *ngIf="city.errors?.['required']" style="color:red;">*</div>
+  <label for="pin">PIN Code:</label>
+  <input type="number" id="pin" name="pin" [(ngModel)]="admin.pinCode" [disabled]="!editMode" #pin="ngModel"
+    required>
+  <div *ngIf="pin.errors?.['required']" style="color:red;">*</div>
+  <label for="state">State:</label>
+  <input type="text" id="state" name="state" [(ngModel)]="admin.state" [disabled]="!editMode" #state="ngModel"
+    required>
+  <div *ngIf="state.errors?.['required']" style="color:red;">*</div>
+  <label for="country">Country:</label>
+  <input type="text" id="country" name="country" [(ngModel)]="admin.country" disabled>
+</div>
+
+  <div class="buttons">
+    <button (click)="toggleEditMode()">
+      <i class="fa fa-edit"></i> {{ editMode ? 'Cancel' : 'Edit' }}
+    </button>
+    <button [ngClass]="{'disabled-button': !editMode}" *ngIf="editMode" (click)="saveChanges()">
+      <i class="fa fa-save"></i> Save
+    </button>
+  </div>
+</div>

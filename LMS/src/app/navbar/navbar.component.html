@@ -1,0 +1,44 @@
+<body>
+  <nav>
+    <div class="navbar">
+      <div class="logo">
+        <img src="assets/image/icon.png" alt="LMS" id="icon">
+     </div>     
+      <ul class="menu" [ngClass]="{ 'open': isMenuOpen }">
+        <li *ngIf="!isLoggedIn"><a [class.current]="isActive('/home')" routerLink="home"><i class="fas fa-home icon"></i></a></li>
+
+        <li *ngIf="userRole()==='ADMIN'"><a [class.current]="isActive('/admin/home')" routerLink="admin/home"><i class="fas fa-home icon"></i></a></li>
+
+        <li *ngIf="userRole()==='USER'"><a [class.current]="isActive('/customer/home')" routerLink="customer/home"><i class="fas fa-home icon"></i></a></li>
+
+        <li *ngIf="userRole()==='ADMIN'"><a [class.current]="isActive('/admin/view-all-customers')" routerLink="admin/view-all-customers">Customers</a></li>
+
+        <li *ngIf="userRole()==='ADMIN'"><a [class.current]="isActive('/admin/view-all-admin')" routerLink="admin/view-all-admin">Admins</a></li>
+
+        <li *ngIf="userRole()==='ADMIN'"><a [class.current]="isActive('/admin/view-all-loans')" routerLink="admin/view-all-loans">Loans</a></li>
+
+        <li *ngIf="userRole()==='USER'"><a [class.current]="isActive('/customer/myLoans')" routerLink="customer/myLoans">MyLoans</a></li>
+
+        <li *ngIf="!isLoggedIn || userRole()==='USER'"><a [class.current]="isActive('/calculateEMI')" routerLink="calculateEMI">EMI Calc.</a></li>
+
+        <li *ngIf="userRole()==='ADMIN'"><a [class.current]="isActive('/admin/account')" routerLink="admin/account"><i class="fas fa-user"></i></a></li>
+
+        <li *ngIf="userRole()==='USER'"><a [class.current]="isActive('/customer/account')" routerLink="customer/account"><i class="fas fa-user"></i></a></li>
+
+        <li *ngIf="!isLoggedIn"><a [class.current]="isActive('/login')" routerLink="login">Login</a></li>
+
+        <li *ngIf="!isLoggedIn"><a [class.current]="isActive('/register')" routerLink="register">Register</a></li>
+
+        <li *ngIf="isLoggedIn"><a (click)="logout()">Logout</a></li>
+
+        <div class="cancel-btn" (click)="closeMenu()">
+          <i class="fas fa-times"></i>
+        </div>
+      </ul>
+    </div>
+    <div class="menu-btn" (click)="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+    
+  </nav>
+</body>

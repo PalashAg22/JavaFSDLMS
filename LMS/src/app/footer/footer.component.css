@@ -1,0 +1,27 @@
+.footer {
+  background-color: #333;
+  color: #fff;
+  width: 100%;
+}
+
+.footer .content {
+  display: flex;
+  justify-content: center;
+}
+
+.footer .footer-content {
+  margin: 0 40px;
+}
+
+@media (max-width: 525px) {
+  .footer .content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .footer .footer-content {
+    margin: 0;
+  }
+}

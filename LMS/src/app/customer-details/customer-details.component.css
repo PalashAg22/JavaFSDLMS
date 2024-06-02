@@ -1,0 +1,32 @@
+.customer-details-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.customer-details {
+  max-width: 600px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.detail-label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.detail-value {
+  flex-grow: 1;
+}
+
+.detail-label a {
+  cursor: pointer;
+}

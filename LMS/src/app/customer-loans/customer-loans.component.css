@@ -1,0 +1,120 @@
+.container {
+  margin: 20px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+.filter {
+  display: inline;
+  align-items: center;
+  margin: 10px;
+}
+.search {
+  display: inline;
+  margin:10px;
+}
+.input-search {
+  padding: 8px 16px;
+  border-radius: 4px;
+  width: 200px;
+}
+.filter-select , .input-search{
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #0e0303;
+  background-color: #fff;
+  font-size: 14px;
+  margin-bottom: 10px;
+  width: 200px;
+}
+
+@media (max-width: 815px) {
+  .search,
+  .filter {
+    flex-basis: 100%;
+  }
+}
+
+.loan-details-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 10px; 
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.loan-details {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.loan-details.cancelled {
+  background-color: #f5ebebe8;
+}
+.loan-details.rejected {
+  background-color: #f47382d9;
+}
+.loan-details.approved {
+  background-color: #a5f0b9df;
+}
+.loan-details.pending {
+  background-color: #c9d59dda;
+}
+
+@media (max-width: 768px) {
+  .loan-details-container {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .loan-details-container {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.detail-label {
+  font-weight: bold;
+  margin-right: 10px; 
+}
+
+.button-container {
+  display: flex;
+}
+
+.action-btn {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+  transition: background-color 0.3s ease;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.disabled-btn {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.disabled-btn:hover {
+  background-color: #ccc;
+}

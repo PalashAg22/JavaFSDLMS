@@ -1,0 +1,167 @@
+<body>
+  <div class="container">
+    <header>Customer Registration</header>
+    <div class="form-container">
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="FirstName">First Name</label>
+          <input type="text" id="FirstName" formControlName="FirstName" class="form-control name"
+            [ngClass]="{ 'is-invalid': registrationForm.get('FirstName')?.invalid && registrationForm.get('FirstName')?.touched }">
+          <div *ngIf="registrationForm.get('FirstName')?.invalid && registrationForm.get('FirstName')?.touched"
+            class="invalid-feedback">
+            *Required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="LastName">Last Name</label>
+          <input type="text" id="LastName" formControlName="LastName" class="form-control name"
+            [ngClass]="{ 'is-invalid': registrationForm.get('LastName')?.invalid && registrationForm.get('LastName')?.touched }">
+          <div *ngIf="registrationForm.get('LastName')?.invalid && registrationForm.get('LastName')?.touched"
+            class="invalid-feedback">
+            *Required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number</label>
+          <input type="number" id="phoneNumber" formControlName="phoneNumber" class="form-control"
+            [ngClass]="{ 'is-invalid': registrationForm.get('phoneNumber')?.invalid && registrationForm.get('phoneNumber')?.touched }">
+          <div *ngIf="registrationForm.get('phoneNumber')?.invalid && registrationForm.get('phoneNumber')?.touched"
+            class="invalid-feedback">
+            *Required and must be a valid 10-Digit number
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" formControlName="email" class="form-control "
+            [ngClass]="{ 'is-invalid': registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched }">
+          <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched"
+            class="invalid-feedback">
+            *(Enter a valid email someone@gmail.com')
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" formControlName="password" class="form-control"
+            [ngClass]="{ 'is-invalid': registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched }">
+          <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched"
+            class="invalid-feedback">
+            *(Must be greater than 8 Chars long)
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control"
+            [ngClass]="{ 'is-invalid': registrationForm.get('confirmPassword')?.invalid && registrationForm.get('confirmPassword')?.touched }">
+          <div
+            *ngIf="registrationForm.get('confirmPassword')?.invalid && registrationForm.get('confirmPassword')?.touched"
+            class="invalid-feedback">
+            *Required
+          </div>
+          <div *ngIf="registrationForm.hasError('mismatch') && registrationForm.get('confirmPassword')?.dirty"
+     class="invalid-feedback">
+     Passwords do not match
+</div>
+
+        </div>
+        <div class="form-group">
+          <label for="dateOfBirth">Date of Birth</label>
+          <input type="date" id="dateOfBirth" formControlName="dateOfBirth" class="form-control"
+            [ngClass]="{ 'is-invalid': registrationForm.get('dateOfBirth')?.invalid && registrationForm.get('dateOfBirth')?.touched }">
+          <div *ngIf="(registrationForm.get('dateOfBirth')?.invalid && registrationForm.get('dateOfBirth')?.touched) || registrationForm.hasError('ageInvalid')"
+            class="invalid-feedback">
+            *Invalid Age
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Gender:</label><br>
+          <div class="gender-container">
+            <label><input type="radio" formControlName="gender" value="Male" class="radio-button">Male</label>
+            <label><input type="radio" formControlName="gender" value="Female" class="radio-button">Female</label>
+            <label><input type="radio" formControlName="gender" value="PreferNotToSay" class="radio-button"> Prefer not to say</label>
+          </div>
+          <div *ngIf="registrationForm.get('gender')?.invalid && registrationForm.get('gender')?.touched"
+               class="invalid-feedback">
+            *Required
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input type="text" id="address" formControlName="address" class="form-control"
+            [ngClass]="{ 'is-invalid': registrationForm.get('address')?.invalid && registrationForm.get('address')?.touched }">
+          <div *ngIf="registrationForm.get('address')?.invalid && registrationForm.get('address')?.touched"
+            class="invalid-feedback">
+            *Required
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" id="city" formControlName="city" class="form-control"
+            [ngClass]="{ 'is-invalid': registrationForm.get('city')?.invalid && registrationForm.get('city')?.touched }">
+          <div *ngIf="registrationForm.get('city')?.invalid && registrationForm.get('city')?.touched"
+            class="invalid-feedback">
+            *Required(Must be greater than 2 characters long)
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="pin">PIN Code</label>
+          <input type="number" id="pin" formControlName="pin" class="form-control"
+            [ngClass]="{ 'is-invalid': registrationForm.get('pin')?.invalid && registrationForm.get('pin')?.touched }">
+          <div *ngIf="registrationForm.get('pin')?.invalid && registrationForm.get('pin')?.touched"
+            class="invalid-feedback">
+            *Required(Must be 6 digits long)
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="state">State</label>
+          <select id="state" formControlName="state" class="form-control"
+            [ngClass]="{ 'is-invalid': registrationForm.get('state')?.invalid && registrationForm.get('state')?.touched }">
+            <option value="" disabled selected>Select State</option>
+            <option *ngFor="let state of indianStates" [value]="state">{{ state }}</option>
+          </select>
+          <div *ngIf="registrationForm.get('state')?.invalid && registrationForm.get('state')?.touched"
+            class="invalid-feedback">
+            State is required
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="country">Country</label>
+          <input type="text" id="country" value="India" class="form-control" readonly>
+        </div>        
+        <div class="form-group">
+          <label for="creditScore">Credit Score</label>
+          <input type="number" id="creditScore" formControlName="creditScore" class="form-control"
+            [ngClass]="{ 'is-invalid': registrationForm.get('creditScore')?.invalid && registrationForm.get('creditScore')?.touched }">
+          <div *ngIf="registrationForm.get('creditScore')?.invalid && registrationForm.get('creditScore')?.touched"
+            class="invalid-feedback">
+            *Required(Must be above 500)
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="panCardNumber">PAN Number</label>
+          <input type="text" id="panCardNumber" formControlName="panCardNumber" class="form-control"
+            [ngClass]="{ 'is-invalid': registrationForm.get('panCardNumber')?.invalid && registrationForm.get('panCardNumber')?.touched }">
+          <div *ngIf="registrationForm.get('panCardNumber')?.invalid && registrationForm.get('panCardNumber')?.touched"
+            class="invalid-feedback">
+            *Required(Format:- 'XXXXX1234X')
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="idProof">ID Proof:</label>
+          <input type="file" id="idProof" formControlName="idProof" accept=".pdf,.jpg,.png" class="file-name" (change)="onFileUpload($event)">
+          <div *ngIf="registrationForm.get('idProof')?.invalid && registrationForm.get('idProof')?.touched"
+            class="invalid-feedback">
+            *Required
+          </div>
+        </div >
+        <div class="btn-group">
+          <button type="submit" class="button" [disabled]="!registrationForm.valid">Submit</button>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+
+</body>

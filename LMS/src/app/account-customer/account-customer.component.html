@@ -1,0 +1,105 @@
+<div class="customer-details">
+    <h2>Customer Details</h2>
+    <div class="customer-info">
+        <div class="photo-container">
+            <img [src]="(customer.profileImage !== null && customer.profileImage !== 'null') ?customer.image : 'assets/image/defaultProfile.webp'"
+                alt="User Photo" class="user-photo">
+            <div class="photo-icons">
+                <label class="update-icon">
+                    <input type="file" style="display:none" #fileInput
+                      (change)="onFileSelected($event, fileInput, customer.profileImage, customer.userId)" accept="image/*">
+                    <i class="fa fa-edit"></i>
+                    <span (click)="fileInput.click()"></span>
+                  </label>
+                <label class="remove-icon" (click)="onDeleteFile(customer.profileImage,customer.userId)">
+                    <i class="fa fa-trash"></i>
+                    <span></span>
+                </label>
+            </div>
+        </div>
+        <label for="customerId">Customer ID:</label>
+        <input type="number" id="customerId" [(ngModel)]="customer.userId" disabled>
+
+        <label for="customerFirstName">First Name:</label>
+        <input type="text" id="customerFirstName" [(ngModel)]="customer.firstName" [disabled]="!editMode"
+            required minlength="3" #fname="ngModel">
+        <div class="error" *ngIf="fname.invalid &&(fname.errors || fname.touched)">
+            <span *ngIf="fname.errors?.['required'] "> first name is required</span>
+            <span *ngIf="fname.errors?.['minlength'] "> minimum 5 characters</span>
+        </div>
+
+        <label for="customerLastName">Last Name:</label>
+        <input type="text" id="customerLastName" [(ngModel)]="customer.lastName" [disabled]="!editMode"
+            #lname="ngModel" required minlength="3">
+        <div class="error" *ngIf="lname.invalid &&(lname.errors || lname.touched)">
+            <span *ngIf="lname.errors?.['required'] "> Last name is required</span>
+            <span *ngIf="lname.errors?.['minlength'] "> minimum 5 characters</span>
+        </div>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" [(ngModel)]="customer.email" [disabled]="!editMode" #email="ngModel"
+            pattern="^(?!.*hexaware.com$).*">
+        <div *ngIf="email.errors?.['pattern']" style="color: red;">Invalid email format</div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" [(ngModel)]="customer.password" [disabled]="!editMode" required minlength="8"
+            #pwd="ngModel">
+        <div class="error" *ngIf="pwd.invalid &&(pwd.errors || pwd.touched)">
+            <span *ngIf="pwd.errors?.['required'] "> password is required</span>
+            <span *ngIf="pwd.errors?.['minlength'] "> minimum 8 characters</span>
+        </div>
+
+        <label for="dateOfBirth">Date of Birth:</label>
+        <input type="date" id="dateOfBirth" [(ngModel)]="customer.dateOfBirth" [disabled]="true">
+
+        <label for="gender">Gender:</label>
+        <input type="text" id="gender" [(ngModel)]="customer.gender" [disabled]="true">
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" [(ngModel)]="customer.address" [disabled]="!editMode" required minlength="5"
+            #address="ngModel">
+        <div class="error" *ngIf="address.invalid &&(address.errors || address.touched)">
+            <span *ngIf="address.errors?.['required'] "> address is required</span>
+            <span *ngIf="address.errors?.['minlength'] "> minimum 5 characters</span>
+        </div>
+        <label for="city">City:</label>
+        <input type="text" id="city" [(ngModel)]="customer.city" [disabled]="!editMode" required minlength="3"
+            #city="ngModel">
+        <div class="error" *ngIf="city.invalid &&(city.errors || city.touched)">
+            <span *ngIf="city.errors?.['required'] "> City is required</span>
+            <span *ngIf="city.errors?.['minlength'] "> Minimum 5 characters</span>
+        </div>
+        <label for="pin">PIN Code:</label>
+        <input type="number" id="address" [(ngModel)]="customer.pinCode" [disabled]="!editMode" required minlength="6" maxlength="6"
+            #pin="ngModel">
+        <div class="error" *ngIf="pin.invalid &&(pin.errors || pin.touched)">
+            <span *ngIf="pin.errors?.['required'] ">PINCode is required</span>
+            <span *ngIf="pin.errors?.['minlength'] ">Must be 6 digits long</span>
+        </div>
+        <label for="state">State:</label>
+        <select name="state" id="state" [(ngModel)]="customer.state" [disabled]="!editMode">
+            <option value="" selected> select a state</option>
+            <option *ngFor="let state of indianStates" [value]="state">{{state}}</option>
+        </select>
+        <label for="country">Country:</label>
+        <input type="text" id="country" [(ngModel)]="customer.country" disabled>
+        <label for="creditScore">Credit Score:</label>
+        <input type="number" id="creditScore" [(ngModel)]="customer.creditScore" [disabled]="!editMode" required
+            min="500" max="1100" #creditScore="ngModel">
+        <div class="error" *ngIf="creditScore.invalid &&(creditScore.errors || creditScore.touched)">
+            <span *ngIf="creditScore.errors?.['required'] ">Credit Score is required</span>
+            <span *ngIf="creditScore.errors?.['min'] ">minimum value 500</span>
+            <span *ngIf="creditScore.errors?.['max'] ">maximum value 1100</span>
+        </div>
+        <label for="panCard">PAN Card:</label>
+        <input type="text" id="panCard" [(ngModel)]="customer.panCardNumber" [disabled]="true">
+    </div>
+
+    <div class="buttons">
+        <button (click)="toggleEditMode()">
+            <i class="fa fa-edit"></i> {{ editMode ? 'Cancel' : 'Edit' }}
+        </button>
+        <button *ngIf="editMode" (click)="saveChanges()">
+            <i class="fa fa-save"></i> Save
+        </button>
+    </div>
+</div>

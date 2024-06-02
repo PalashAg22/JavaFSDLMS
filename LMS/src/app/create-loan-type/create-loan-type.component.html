@@ -1,0 +1,26 @@
+<form [formGroup]="loanTypeForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="loanTypeName">Loan Type Name</label>
+    <input type="text" id="loanTypeName" formControlName="loanTypeName">
+    <div *ngIf="loanTypeForm.get('loanTypeName')?.invalid && loanTypeForm.get('loanTypeName')?.touched" class="error-message">
+      <div *ngIf="loanTypeForm.get('loanTypeName')?.hasError('required')">Loan Type Name is required.</div>
+    </div>
+  </div>
+  <div>
+    <label for="loanInterestBaseRate">Loan Interest Base Rate</label>
+    <input type="number" id="loanInterestBaseRate" formControlName="loanInterestBaseRate">
+    <div *ngIf="loanTypeForm.get('loanInterestBaseRate')?.invalid && loanTypeForm.get('loanInterestBaseRate')?.touched" class="error-message">
+      <div *ngIf="loanTypeForm.get('loanInterestBaseRate')?.hasError('required')">Loan Interest Base Rate is required.</div>
+      <div *ngIf="loanTypeForm.get('loanInterestBaseRate')?.hasError('min') || loanTypeForm.get('loanInterestBaseRate')?.hasError('max')">Loan Interest Base Rate must be between 4 and 30.</div>
+    </div>
+  </div>
+  <div>
+    <label for="loanManagementFees">Loan Management Fees</label>
+    <input type="number" id="loanManagementFees" formControlName="loanManagementFees">
+    <div *ngIf="loanTypeForm.get('loanManagementFees')?.invalid && loanTypeForm.get('loanManagementFees')?.touched" class="error-message">
+      <div *ngIf="loanTypeForm.get('loanManagementFees')?.hasError('required')">Loan Management Fees is required.</div>
+      <div *ngIf="loanTypeForm.get('loanManagementFees')?.hasError('min') || loanTypeForm.get('loanManagementFees')?.hasError('max')">Loan Management Fees must be between 0 and 5000.</div>
+    </div>
+  </div>
+  <button type="submit" [disabled]="!loanTypeForm.valid">Create Loan Type</button>
+</form>

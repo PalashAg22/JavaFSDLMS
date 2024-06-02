@@ -1,0 +1,91 @@
+<body>
+  <div class="container">
+    <header>Update Applied Loan Application </header>
+    <form #formData="ngForm" (ngSubmit)="formData.valid && getData(formData.value)">
+      <div calss="form first">
+        
+        <div class="details ID">
+          <div class="loanId">Loan Application id {{loanId}} you want to update</div>
+          <span class="title">Enter Loan Informtion</span>
+          <div class="fields">
+            <div class="input-field">
+              <label>Enter Amount</label>
+              <input type="number" name="principal" ngModel required min="10000" max="100000000" placeholder="Enter principal amount" #principal="ngModel">
+              <div class="error" *ngIf="principal.invalid && (principal.touched || principal.errors)">
+                <span *ngIf="principal.touched && principal.errors?.['required']"> principal is required</span>
+                <span *ngIf="principal.touched && principal.errors?.['min']">minimum value is 10,000</span>
+                <span *ngIf="principal.touched && principal.errors?.['max']">maximum value is  100,000,000</span>
+            </div>              
+            </div>
+
+            <div class="input-field">
+              <label>Enter duration in months</label>
+              <input type="number" name="tenureInMonths" value="" ngModel placeholder="Enter duration in months"
+                required min="12" max="120" #tenure="ngModel">
+                <div class="error" *ngIf="tenure.invalid && (tenure.touched || tenure.errors)">
+                  <span *ngIf="tenure.touched && tenure.errors?.['required']"> tenure is required</span>
+                  <span *ngIf="tenure.touched && tenure.errors?.['min']"> minimum value is 10 months</span>
+                  <span *ngIf="tenure.touched && tenure.errors?.['max']">maximun value is 120 months</span>
+              </div>
+            </div>
+
+            <div class="input-field">
+              <select name="loanType" ngModel required class="select">
+                <option value="" disabled selected>Select a loan type</option>
+                <option *ngFor="let loan of loanType" [value]="loan.loanTypeName">{{loan.loanTypeName}}</option>
+              </select>               
+            </div>
+          </div>
+        </div>
+        <div class="details ID">
+          <hr>
+          <span class="title">Enter Property Informtion</span>
+          <div class="fields">
+            <div class="input-field">
+              <label>Enter Property Address</label>
+              <input type="text" name="propertyAddress" value="" ngModel placeholder="Property address" #address="ngModel" required minlength="5" maxlength="120" >
+               <div class="error" *ngIf="address.invalid && (address.touched || address.errors)">
+                 <span *ngIf="address.touched && address.errors?.['required']"> address is required</span>
+                 <span *ngIf="address.touched && address.errors?.['minlength']"> minimum 5 characters</span>
+                 <span *ngIf="address.touched && address.errors?.['maxlength']">maximum 120 characters</span>
+              </div> 
+            </div>
+
+            <div class="input-field">
+              <label>Enter property Area in m^2</label>
+              <input type="number" name="propertyAreaInm2" value="" ngModel placeholder="Area in m^2" required min="1000" max="100000" #area="ngModel">
+              <div class="error" *ngIf="area.invalid && (area.touched || area.errors)">
+                <span *ngIf="area.touched && area.errors?.['required']"> area is required</span>
+                <span *ngIf="area.touched && area.errors?.['min']"> minimum value is 1,000 m^2</span>
+                <span *ngIf="area.touched && area.errors?.['max']">maximum value is 100,000 m^2</span>
+            </div>
+            </div>
+
+            <div class="input-field">
+              <label>Enter property Value in Indian Rupee</label>
+              <input type="number" name="propertyValue" ngModel placeholder="Value in Indian Rupee" required min="10000" max="10000000" #value="ngModel">
+              <div class="error" *ngIf="value.invalid && (value.touched || value.errors)">
+                <span *ngIf="value.errors?.['required'] && value.touched"> value is required</span>
+                <span *ngIf="value.touched && value.errors?.['min']">minimum value is 10,000</span>
+                <span *ngIf="value.touched && value.errors?.['max']">maximum value is 10,000,000</span>
+            </div>
+            </div>
+
+            <div class="input-field">
+              <label>Upload Property Proof</label>
+              <input type="file" name="property" ngModel required (change)="onFileUpload($event)">
+            </div>
+
+          </div>
+          <div class="group" >
+            <button *ngIf="formData.valid;else disableSubmit" class="btn">Submit</button>
+            <ng-template #disableSubmit>
+              <button style="background-color: #ccc;color: #666;cursor: not-allowed;" >Submit</button>
+            </ng-template>
+            <button routerLink="customer/home" id="cancle">Cancle</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</body>

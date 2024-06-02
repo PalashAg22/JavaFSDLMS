@@ -1,0 +1,43 @@
+<div class="main">
+  <form #loanForm="ngForm" (ngSubmit)="submitForm(loanForm.value)">
+    <div class="form-group">
+      <label for="loanAmount">Loan Amount</label>
+      <input type="number" id="loanAmount" name="loanAmount" ngModel required min="10000">
+      <div *ngIf="loanForm.controls['loanAmount'].invalid && loanForm.controls['loanAmount'].touched" class="error-message">
+        *Required (minimum 10000)
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="loanDuration">Loan Duration (months)</label>
+      <input type="number" id="loanDuration" name="loanDuration" ngModel required min="12">
+      <div *ngIf="loanForm.controls['loanDuration'].invalid && loanForm.controls['loanDuration'].touched" class="error-message">
+        *Required (minimum 12)
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="loanType">Loan Type</label>
+      <select id="loanType" name="loanType" [(ngModel)]="selectedLoan" class="form-control" (change)="updateManagementFees()" required>
+        <option value="" disabled selected>Select a loan type</option>
+        <option *ngFor="let loantype of loanTypes" [value]="loantype">{{ loantype.loanTypeName }}</option>
+      </select>
+      <div *ngIf="loanForm.controls['loanType'].invalid && loanForm.controls['loanType'].touched" class="error-message">
+        *Required
+      </div>
+      <div *ngIf="selectedLoan">
+      <!-- <p>Management Fees: {{ selectedLoan.loanManagementFees | currency:'INR'}}</p> -->
+      <p style="color: red; font-size:12px">Management Fee is applicable for the selected loanType</p>
+    </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="loanInterest">Estd. Interest Rate (%)</label>
+      <input type="number" id="loanInterest" name="loanInterest" [(ngModel)]="loanInterestRate" required min="0">
+      <div *ngIf="loanForm.controls['loanInterest'].invalid && loanForm.controls['loanInterest'].touched" class="error-message">
+        *Required(must be positive value)
+      </div>
+    </div>
+    <button type="submit" [disabled]="loanForm.invalid" class="submit-button">Submit</button>
+  </form>
+</div>

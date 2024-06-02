@@ -1,0 +1,53 @@
+<div class="loan-types-container">
+  <h2>All Loan Types</h2>
+  <div class="search">
+    <input type="search" placeholder="Search here..." name="search" [(ngModel)]="searchValue" class="input-search"
+      (input)="onSearch()">
+  </div>
+  <div class="new-button">
+    <button (click)="createNewLoan()">Create New</button>
+  </div>
+  <div *ngIf="loanTypes.length > 0; else noResult">
+    <ul>
+      <ng-container *ngIf="searchValue.length === 0 || tempLoanTypes.length > 0; else noResult">
+        <li *ngFor="let loanType of (tempLoanTypes.length > 0 ? tempLoanTypes : loanTypes)">
+          <div class="loan-type-info">
+            <span>{{ loanType.loanTypeName }} - Interest Rate: {{ loanType.loanInterestBaseRate }}% - Management Fees:
+              {{
+              loanType.loanManagementFees }}</span>
+            <div class="actions">
+              <button (click)="editLoanType(loanType)" [disabled]="loanType.isEditing">Edit</button>
+              <button *ngIf="loanType.isEditing" (click)="cancelEdit(loanType)"
+                [disabled]="!(loanType.loanManagementFees>0 && loanType.loanManagementFees<=5000 && loanType.loanInterestBaseRate>=4 && loanType.loanInterestBaseRate<=36)  || !loanType.isEditing">Cancel</button>
+              <button (click)="saveLoanType(loanType)"
+                [disabled]="!(loanType.loanManagementFees>0 && loanType.loanManagementFees<=5000 && loanType.loanInterestBaseRate>=4 && loanType.loanInterestBaseRate<=36)  || !loanType.isEditing">Save</button>
+            </div>
+          </div>
+          <div class="edit-fields" *ngIf="loanType.isEditing">
+            <input type="text" [(ngModel)]="loanType.loanTypeName" placeholder="Loan Type Name" [readonly]="true"
+              [ngClass]="{'readonly-shaded': true}">
+
+            <input type="number" [(ngModel)]="loanType.loanInterestBaseRate" placeholder="Interest Rate"
+              name="interestRate" #interestRate="ngModel" required min="4" max="30">
+            <div class="input-container">
+              <div *ngIf="interestRate.invalid && interestRate.errors?.['required']" style="color:red;"
+                class="error-sign">*</div>
+            </div>
+
+            <input type="number" [(ngModel)]="loanType.loanManagementFees" placeholder="Management Fees"
+              name="managementFees" #managementFees="ngModel" required min="0" max="5000">
+            <div class="input-container">
+              <div *ngIf="managementFees.invalid && managementFees.errors?.['required']" style="color:red;"
+                class="error-sign">*</div>
+            </div>
+          </div>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</div>
+<ng-template #noResult>
+  <div style="font-weight: bold; text-align: center; margin-top: 20vh; font-size: 24px;">
+    <p>No LoanType found</p>
+  </div>
+</ng-template>

@@ -1,0 +1,66 @@
+<div class="container">
+  <h1>All Admins</h1>
+  <div class="search">
+    <button (click)="createNewAdmin()">Create Admin</button>
+    <div class="search-inside">
+      <input type="search" placeholder="Search here..." name="search" [(ngModel)]="searchValue" class="input-search"
+        (input)="onSearch()">
+    </div>
+  </div>
+  <div *ngIf="admins.length > 0; else noResult">
+    <ng-container *ngIf="searchValue.length === 0 || tempAdmins.length > 0; else noResult">
+      <div class="admin-details-container">
+        <div class="admin-details" *ngFor="let admin of (tempAdmins.length>0?tempAdmins:admins)">
+          <div class="detail-row">
+            <span class="detail-label">Profile Picture:</span>
+            <img
+              [src]="(admin.profileImage !== null && admin.profileImage !== 'null') ?admin.image : 'assets/image/defaultProfile.webp'"
+              alt="Profile Picture" class="profile-picture">
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Admin Id:</span>
+            <span>{{ admin.userId }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Name:</span>
+            <span>{{ admin.firstName }} {{admin.lastName }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Email:</span>
+            <span>{{ admin.email }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Phone Number</span>
+            <span>{{ admin.phoneNumber }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Date of Birth:</span>
+            <span>{{ admin.dateOfBirth }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Age:</span>
+            <span>{{ admin.age }}</span>
+          </div>
+
+          <div class="detail-row">
+            <span class="detail-label">Gender:</span>
+            <span>{{ admin.gender}}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Address:</span>
+            <span>{{ admin.address }}, {{admin.city}}, {{admin.pinCode}}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">State:</span>
+            <span>{{ admin.state }}, {{admin.country}}</span>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+<ng-template #noResult>
+  <div style="font-weight: bold; text-align: center; margin-top: 20vh; font-size: 24px;">
+    <p>No admins found</p>
+  </div>
+</ng-template>
