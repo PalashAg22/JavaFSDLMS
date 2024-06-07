@@ -46,6 +46,7 @@ export class CalculateEmiComponent {
     this.customerService.calculateEMI(data.loanAmount, data.loanDuration,data.loanInterest)
     .subscribe(
       (response)=>{
+        console.log(response)
         alert("Your estimated emi will be: "+ response);
         this.router.navigate(['calculateEMI']);
         console.log(response);

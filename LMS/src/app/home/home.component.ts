@@ -23,6 +23,7 @@ loanTypeList:LoanType[] = [];
   getLoanTypes(){
     this.customerService.getAllLoanTypes().subscribe(
       (loanType)=>{
+        console.log(loanType)
         this.loanTypeList = loanType
       }
     );

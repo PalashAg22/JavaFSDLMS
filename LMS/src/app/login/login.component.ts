@@ -20,10 +20,11 @@ export class LoginComponent {
   doLogin(loginData: Login) {
     this.userService.login(loginData).pipe(
       catchError((error: HttpErrorResponse) => {
+        console.log("Error : "+error)
         if (error.status >= 401 && error.status<=500) {
-          alert("Wrong Credentials");
+          alert("Error : Wrong Credentials");
         } else {
-          alert("An error occurred. Please try again later.");
+          alert("Error : An error occurred. Please try again later");
         }
         return throwError(error);
       })

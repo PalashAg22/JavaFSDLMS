@@ -72,10 +72,12 @@ export class CustomerRegisterComponent {
       this.customer.panCardNumber=this.registrationForm.value.panCardNumber;
       console.log(this.customer);
       this.userService.register(this.customer, this.file).subscribe(response => {
+          console.log(response);
           this.router.navigate(['/login']);
           alert('You registeration is successfull,Please login with the credentials to continue.');
       }, (error) => {
-        alert('Error: Username already exists. Please login with the credentials to continue' );
+        console.log(error);
+        alert('Error: '+ error.error );
       });
     } else {
       this.registrationForm.markAllAsTouched();

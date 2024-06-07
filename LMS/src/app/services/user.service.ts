@@ -19,13 +19,13 @@ export class UserService {
   public login(loginRequest:Login){
     return this.http.post(this.PATH_OF_API+"/login",loginRequest,{headers:this.requestHeader});
   }
-  register(customerDTO: User, file: File): Observable<boolean> {
+  register(customerDTO: User, file: File): Observable<any> {
     const formData: FormData = new FormData();
     console.log("Inside register(): "+JSON.stringify(customerDTO));
     formData.append('register',JSON.stringify(customerDTO));
     formData.append('file', file);
     console.log("Form Data"+formData);
-    return this.http.post<boolean>(this.PATH_OF_API+'/customer/register', formData,{headers:this.requestHeader});
+    return this.http.post<any>(this.PATH_OF_API+'/customer/register', formData,{headers:this.requestHeader});
   }
 
   public roleMatch(allowedRole: string):boolean{
