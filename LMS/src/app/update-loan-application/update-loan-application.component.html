@@ -78,11 +78,11 @@
 
           </div>
           <div class="group" >
-            <button *ngIf="formData.valid;else disableSubmit" class="btn">Submit</button>
+            <button *ngIf="formData.valid && isValid;else disableSubmit" class="btn">Submit</button>
             <ng-template #disableSubmit>
               <button style="background-color: #ccc;color: #666;cursor: not-allowed;" >Submit</button>
             </ng-template>
-            <button routerLink="customer/home" id="cancle">Cancle</button>
+            <button routerLink="/customer/myLoans" id="cancle">Cancle</button>
           </div>
         </div>
       </div>

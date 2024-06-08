@@ -26,7 +26,7 @@ import com.hexaware.lms.filter.JwtAuthFilter;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity
+//@EnableMethodSecurity
 public class SecurityConfig {
 
 	Logger logger = LoggerFactory.getLogger(SecurityConfig.class);

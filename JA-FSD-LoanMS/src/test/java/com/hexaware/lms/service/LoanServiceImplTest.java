@@ -22,6 +22,8 @@ import com.hexaware.lms.exception.CustomerNotEligibleException;
 import com.hexaware.lms.exception.LoanNotFoundException;
 import com.hexaware.lms.exception.PropertyAlreadyExistException;
 
+import jakarta.mail.MessagingException;
+
 @SpringBootTest
 class LoanServiceImplTest {
 
@@ -31,7 +33,7 @@ class LoanServiceImplTest {
 	ILoanService serviceTest;
 
 	@Test
-	void testApplyLoan() throws PropertyAlreadyExistException, IOException, CustomerNotEligibleException {
+	void testApplyLoan() throws PropertyAlreadyExistException, IOException, CustomerNotEligibleException, MessagingException {
 		LoanApplicationDTO loan = new LoanApplicationDTO();
 		PropertyDTO property = new PropertyDTO();
 

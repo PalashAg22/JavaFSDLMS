@@ -14,8 +14,12 @@ export class CancelAppliedLoanComponent {
     this.route.params.subscribe(params=> this.loanId= params['loanId']);
   }
   confirmCancellation(){
-    this.customerService.getUpdatedLoanApplication(this.loanId);
-    this.router.navigate(['customer/myLoans']);
+    this.customerService.getUpdatedLoanApplication(this.loanId).subscribe(
+      (response)=>{
+        alert("Successfully cancelled loan");
+        this.router.navigate(['customer/myLoans']);
+      }
+    );  
   }
   goBack(){
     this.router.navigate(['customer/myLoans']);

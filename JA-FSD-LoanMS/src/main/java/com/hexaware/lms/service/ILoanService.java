@@ -12,9 +12,11 @@ import com.hexaware.lms.exception.CustomerNotEligibleException;
 import com.hexaware.lms.exception.LoanNotFoundException;
 import com.hexaware.lms.exception.PropertyAlreadyExistException;
 
+import jakarta.mail.MessagingException;
+
 public interface ILoanService {
 
-	LoanApplication applyLoan(LoanApplicationDTO loan, PropertyDTO propertyDto, MultipartFile file) throws PropertyAlreadyExistException, IOException, CustomerNotEligibleException;
+	LoanApplication applyLoan(LoanApplicationDTO loan, PropertyDTO propertyDto, MultipartFile file) throws PropertyAlreadyExistException, IOException, CustomerNotEligibleException, MessagingException;
 
 	List<LoanApplication> filterAppliedLoanByType(long customerId, String loanType) throws LoanNotFoundException; 
 

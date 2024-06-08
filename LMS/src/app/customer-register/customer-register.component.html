@@ -151,13 +151,13 @@
         <div class="form-group">
           <label for="idProof">ID Proof:</label>
           <input type="file" id="idProof" formControlName="idProof" accept=".pdf,.jpg,.png" class="file-name" (change)="onFileUpload($event)">
-          <div *ngIf="registrationForm.get('idProof')?.invalid && registrationForm.get('idProof')?.touched"
+          <div *ngIf="(registrationForm.get('idProof')?.invalid && registrationForm.get('idProof')?.touched)" 
             class="invalid-feedback">
             *Required
           </div>
         </div >
         <div class="btn-group">
-          <button type="submit" class="button" [disabled]="!registrationForm.valid">Submit</button>
+          <button type="submit" class="button" [disabled]="(!registrationForm.valid) || (!isValid)">Submit</button>
         </div>
         
       </form>

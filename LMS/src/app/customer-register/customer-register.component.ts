@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { User } from '../Model/User';
@@ -14,7 +14,7 @@ export class CustomerRegisterComponent {
 
   customer:User = new User();
   file!:File;
-
+  isValid:boolean = true;
   indianStates: string[] = [
     'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 'Gujarat',
     'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh', 'Maharashtra',
@@ -48,7 +48,15 @@ export class CustomerRegisterComponent {
     const age = Math.floor((new Date().getTime() - birthDate.getTime()) / (365.25 * 24 * 60 * 60 * 1000));
     return age >= 18 && age <= 80 ? null : { ageInvalid: true };
   }
-
+  // sizeLimitValidator() {
+  //   return (control: FormControl) => {
+  //     const file = control.value;
+  //     if (file && file.size > 1048576) {
+  //       return { sizeInvalid: true };
+  //     }
+  //     return null;
+  //   };
+  // }
   passwordMatchValidator(group: FormGroup) {
     const password = group.get('password')?.value;
     const confirmPassword = group.get('confirmPassword')?.value;
@@ -82,11 +90,19 @@ export class CustomerRegisterComponent {
     } else {
       this.registrationForm.markAllAsTouched();
       console.log(this.registrationForm.value);
-      alert("Not filled correctly...")
+      alert("Registration form not filled correctly")
     }
   }
   onFileUpload(event: any){
-    this.file=event.target.files[0];
-    console.log(this.file.name);
+    const file = event.target.files[0];
+    if (file && file.size > 1048576) { 
+      this.isValid = false;
+      alert('File size exceeds 1MB. Please upload a smaller file.');
+      event.target.value = ''; 
+    } else {
+      this.isValid = true;
+      this.file = file;
+      console.log(this.file.name);
+    }
   }
 }

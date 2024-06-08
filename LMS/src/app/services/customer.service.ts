@@ -74,11 +74,9 @@ export class CustomerService {
     formData.append('file', file);
     return this.http.post<boolean>(this.baseUrl + '/customer/update-loan', formData, {headers: this.getAuthorizationHeader()});
   }
-  getUpdatedLoanApplication(loanId:number){
+  getUpdatedLoanApplication(loanId:number):Observable<any>{
     console.log(" "+loanId);
-    this.http.get(this.baseUrl+'/customer/cancel-applied-loan/'+ loanId,{headers:this.getAuthorizationHeader()}).subscribe(
-      response => alert("Loan application CANCELLED...")
-    );
+    return this.http.get<boolean>(this.baseUrl+'/customer/cancel-applied-loan/'+ loanId,{headers:this.getAuthorizationHeader()});
   }
 
 }

@@ -9,27 +9,28 @@ import java.util.stream.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.hexaware.lms.dto.LoanApplicationDTO;
 import com.hexaware.lms.dto.PropertyDTO;
-import com.hexaware.lms.entities.User;
 import com.hexaware.lms.entities.LoanApplication;
 import com.hexaware.lms.entities.LoanType;
 import com.hexaware.lms.entities.PropertyInfo;
 import com.hexaware.lms.entities.PropertyProof;
+import com.hexaware.lms.entities.User;
 import com.hexaware.lms.exception.CustomerNotEligibleException;
 import com.hexaware.lms.exception.LoanNotFoundException;
 import com.hexaware.lms.exception.PropertyAlreadyExistException;
-import com.hexaware.lms.repository.UserRepository;
 import com.hexaware.lms.repository.LoanRepository;
 import com.hexaware.lms.repository.LoanTypeRepository;
 import com.hexaware.lms.repository.PropertyInfoRepository;
 import com.hexaware.lms.repository.UploadPropertyRepository;
+import com.hexaware.lms.repository.UserRepository;
 
+import jakarta.mail.MessagingException;
 import jakarta.transaction.Transactional;
 
 @Service
@@ -45,7 +46,6 @@ public class LoanServiceImpl implements ILoanService {
 	@Autowired
 	UserRepository customerRepo;
 
-
 	@Autowired
 	private LoanRepository loanRepo;
 
@@ -59,10 +59,18 @@ public class LoanServiceImpl implements ILoanService {
 	@Autowired
 	UploadPropertyRepository uploadPropertyRepo;
 	
+	@Autowired
+	private EmailService senderService;
+	
+//	public void triggerMail(String email) {
+//		senderService.sendSimpleEmail(email,
+//				"This is email subject","This is email body");
+//	}
+	
 	@Override
 	public LoanApplication applyLoan(LoanApplicationDTO loanDto, PropertyDTO propertyDto,MultipartFile file)
 
-			throws PropertyAlreadyExistException, java.io.IOException, CustomerNotEligibleException {
+			throws PropertyAlreadyExistException, java.io.IOException, CustomerNotEligibleException, MessagingException {
 
 		long customerId = loanDto.getCustomerId();
 		LoanType loanType = loanTypeRepo.findAllByLoanTypeName(loanDto.getLoanTypeName());
@@ -108,7 +116,16 @@ public class LoanServiceImpl implements ILoanService {
 		property.setPropertyProof(proof);
 		loan.setPropertyInfo(property);
 		logger.info("loanApplication submitted successfully");
-		return loanRepo.save(loan);
+		
+		String customerEmail = customer.getEmail();
+		String name = customer.getFirstName()+" "+customer.getLastName();
+		String address = propertyDto.getPropertyAddress();
+		
+		
+		LoanApplication appliedLoan =  loanRepo.save(loan);
+		long loanID = appliedLoan.getLoanId();
+		senderService.sendMailWithAttachment(customerEmail, name, loanDto, address, loanID ,file);
+		return appliedLoan;
 	}
 	
 	@Override
@@ -262,8 +279,12 @@ public class LoanServiceImpl implements ILoanService {
 
 		if (isLoanIdValid(loanId) && isLoanStatusValid(status)) {
 			logger.info("Admin is updating the loan application: " + loanId);
+			LoanApplication loanApplication = loanRepo.findById(loanId).orElse(null);
+			String email = loanApplication.getUser().getEmail();
+			String name = loanApplication.getUser().getFirstName()+" "+loanApplication.getUser().getLastName();
 			int rowsAffected=loanRepo.updateLoanStatus(status, loanId);
 			if(rowsAffected>0) {
+				senderService.updatedStatus(email,name, status, loanId);
 				return true;
 			}
 		}

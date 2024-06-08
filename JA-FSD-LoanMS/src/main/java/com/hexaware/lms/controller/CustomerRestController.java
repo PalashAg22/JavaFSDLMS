@@ -40,6 +40,7 @@ import com.hexaware.lms.service.ICustomerService;
 import com.hexaware.lms.service.ILoanService;
 import com.hexaware.lms.service.ILoanTypeService;
 
+import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 
 @CrossOrigin("http://localhost:4200")
@@ -68,11 +69,11 @@ public class CustomerRestController {
 	@PostMapping(value = "/loan-application/applyLoan", consumes = "multipart/form-data")
 	public ResponseEntity<Boolean> applyLoan(@RequestPart("loanRequest") @Valid String loanRequest,
 			@RequestPart("file") MultipartFile file)
-			throws PropertyAlreadyExistException, IOException, CustomerNotEligibleException {
+			throws PropertyAlreadyExistException, IOException, CustomerNotEligibleException, MessagingException {
 		LoanApplicationRequestDTO requestDTO = LoanApplicationRequestDTOMapper.mapFromString(loanRequest);
 		LoanApplication loanApplication = loanService.applyLoan(requestDTO.getLoanApplicationDto(),
 				requestDTO.getPropertyDto(), file);
-		return ResponseEntity.ok().body(loanApplication !=null);
+		return new ResponseEntity(loanApplication, HttpStatus.OK);
 	}
 	
 	@PostMapping(value="/update-loan", consumes="multipart/form-data")
@@ -82,60 +83,60 @@ public class CustomerRestController {
 		LoanApplicationRequestDTO requestDTO = LoanApplicationRequestDTOMapper.mapFromString(loanRequest);
 		LoanApplication loanApplication = loanService.updateLoan(requestDTO.getLoanApplicationDto(),
 				requestDTO.getPropertyDto(), file);
-		return ResponseEntity.ok().body(loanApplication !=null);
+		return new ResponseEntity(loanApplication, HttpStatus.OK);
 	}
 	
 	@GetMapping("/cancel-applied-loan/{loanId}")
 	public ResponseEntity<Boolean> cancelAppliedLoan(@PathVariable  long loanId) {
 		log.info(""+loanId);
-		return ResponseEntity.ok().body(loanService.customerUpdateLoanStatus(loanId, "CANCELLED"));
+		return new ResponseEntity(loanService.customerUpdateLoanStatus(loanId, "CANCELLED"), HttpStatus.ACCEPTED);
 	}
 
 	@GetMapping("/dashboard")
 	public ResponseEntity<List<LoanType>> viewAllAvailableLoans() {
 		log.info("Customer is logged In");
-		return ResponseEntity.ok().body(loanTypeService.viewAvailableLoanType());
+		return new ResponseEntity(loanTypeService.viewAvailableLoanType(), HttpStatus.OK);
 	}
 
 	@GetMapping("/searchLoanById/{customerId}/{loanId}")
 	public ResponseEntity<LoanApplication> searchLoanById(@PathVariable long customerId, @PathVariable long loanId)
 			throws LoanNotFoundException {
 		log.info("Request Received to search loan of Customer: " + customerId);
-		return ResponseEntity.ok().body(loanService.searchAppliedLoan(customerId, loanId));
+		return new ResponseEntity(loanService.searchAppliedLoan(customerId, loanId), HttpStatus.OK);
 	}
 
 	@GetMapping("/viewAllAppliedLoans/{customerId}")
 	public ResponseEntity<List<LoanApplication>> viewAllAppliedLoans(@PathVariable long customerId) {
 		log.info("Request Received to view all loans of Customer: " + customerId);
-		return ResponseEntity.ok().body(loanService.allAppliedLoansOfCustomer(customerId));
+		return new ResponseEntity(loanService.allAppliedLoansOfCustomer(customerId), HttpStatus.OK);
 	}
 
 	@GetMapping("/viewAllAppliedLoansByStatus/{status}/{customerId}")
 	public ResponseEntity<List<LoanApplication>> filterAppliedLoanByStatus(@PathVariable long customerId, @PathVariable String status)
 			throws LoanNotFoundException {
 		log.info("Request Received to view loans by Status: " + status);
-		return ResponseEntity.ok().body(loanService.filterAppliedLoanByStatus(customerId, status));
+		return new ResponseEntity(loanService.filterAppliedLoanByStatus(customerId, status), HttpStatus.OK);
 	}
 
 	@GetMapping("/viewAllAppliedLoansByType/{loanType}/{customerId}")
 	public ResponseEntity<List<LoanApplication>> filterAppliedLoanByType(@PathVariable long customerId, @PathVariable String loanType)
 			throws LoanNotFoundException {
 		log.info("Request Received to view loan by loanType: " + loanType);
-		return ResponseEntity.ok().body(loanService.filterAppliedLoanByType(customerId, loanType));
+		return new ResponseEntity(loanService.filterAppliedLoanByType(customerId, loanType), HttpStatus.OK);
 	}
 
 	@GetMapping("/calculateInterest/{loanId}/{customerId}")
 	public ResponseEntity<Double> calculateInterest(@PathVariable(name = "loanId") long loanId,
 			@PathVariable(name = "customerId") long customerId) {
 		log.info("Calculating Interest of loanId: " + loanId + " for customer: " + customerId);
-		return ResponseEntity.ok().body(loanService.interestCalculator(loanId, customerId));
+		return new ResponseEntity(loanService.interestCalculator(loanId, customerId), HttpStatus.OK);
 	}
 
 	@GetMapping("/calculateEMI/{loanId}/{customerId}")
 	public ResponseEntity<Double> calculateEMI(@PathVariable(name = "loanId") long loanId,
 			@PathVariable(name = "customerId") long customerId) {
 		log.info("Calculating Interest of loanId: " + loanId + " for customer: " + customerId);
-		return ResponseEntity.ok().body(loanService.emiCalculator(loanId, customerId));
+		return new ResponseEntity(loanService.emiCalculator(loanId, customerId), HttpStatus.OK);
 	}
 	@GetMapping("/calculateEMI/{loanAmount}/{loanDuration}/{loanType}")
 	public ResponseEntity<Double> calculateEMI(@PathVariable double loanAmount, @PathVariable int loanDuration,
@@ -143,18 +144,18 @@ public class CustomerRestController {
 		log.info(loanAmount + "  " + loanDuration + "    " + loanType);
 		LoanType loanObj = loanTypeRepo.findAllByLoanTypeName(loanType);
 		double interest = loanObj.getLoanInterestBaseRate();
-		return ResponseEntity.ok().body(loanService.emiCalculator(loanAmount, interest, loanDuration));
+		return new ResponseEntity(loanService.emiCalculator(loanAmount, interest, loanDuration), HttpStatus.OK);
 	}
 
 	@GetMapping("/dashboard/{loanType}")
 	public ResponseEntity<LoanType> filterDashboardLoans(@PathVariable String loanType) throws LoanNotFoundException {
 		log.info("Request Received filter DashBoard Loans by type");
-		return ResponseEntity.ok().body(loanTypeService.searchDashboardLoansToApply(loanType));
+		return new ResponseEntity(loanTypeService.searchDashboardLoansToApply(loanType),HttpStatus.OK);
 	}
 
 	@PutMapping("/updateAccount")
 	public ResponseEntity<User> updateAccountDetails(@RequestBody UserDTO userDto) throws CustomerNotFoundException, DataAlreadyPresentException {
-		return ResponseEntity.ok().body(custService.updateCustomerAccount(userDto));
+		return new ResponseEntity(custService.updateCustomerAccount(userDto), HttpStatus.OK);
 	}
 
 	@ExceptionHandler({ PropertyAlreadyExistException.class })

@@ -49,43 +49,56 @@ public class PublicEndpoints {
 	
 	Logger log= LoggerFactory.getLogger(PublicEndpoints.class);
 
-	@PostMapping(value="/customer/register", consumes="multipart/form-data")
-	public ResponseEntity<Map<String,String>> registerCustomer(@RequestParam("register") String userDTO,@RequestParam("file") MultipartFile file) {
+//	@PostMapping(value="/customer/register", consumes="multipart/form-data")
+//	public ResponseEntity<Map<String,String>> registerCustomer(@RequestParam("register") String userDTO,@RequestParam("file") MultipartFile file) {
+//	    log.info("Request Received to register new Customer: " + userDTO);
+//	    UserDTO userDto= UserDTOMapper.mapFromString(userDTO);
+//	    Map<String,String> response = new HashMap<>();
+//	    String responseString="";
+//	    try {
+//	    	if(custService.register(userDto, file)) {
+//	    		responseString="Successfully Registered";
+//	    	}
+//			response.put("Registration Process: ",responseString);
+//			return ResponseEntity.ok().body(response);
+//		} catch (DataAlreadyPresentException | IOException e) {
+//			responseString="Some exceptions has occurred";
+//			e.printStackTrace();
+//		}
+//	    response.put("Couldn't register", responseString);
+//	    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+//	}
+	@PostMapping(value = "/customer/register", consumes = "multipart/form-data")
+	public ResponseEntity<Map<String, String>> registerCustomer(@RequestParam("register") String userDTO, @RequestParam("file") MultipartFile file) throws DataAlreadyPresentException, IOException {
 	    log.info("Request Received to register new Customer: " + userDTO);
-	    UserDTO userDto= UserDTOMapper.mapFromString(userDTO);
-	    Map<String,String> response = new HashMap<>();
-	    String responseString="";
-	    try {
-	    	if(custService.register(userDto, file)) {
-	    		responseString="Successfully Registered";
-	    	}
-			response.put("Registration Process: ",responseString);
-			return ResponseEntity.ok().body(response);
-		} catch (DataAlreadyPresentException | IOException e) {
-			responseString="Some exceptions has occurred";
-			e.printStackTrace();
-		}
-	    response.put("Couldn't register", responseString);
-	    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+	    UserDTO userDto = UserDTOMapper.mapFromString(userDTO);
+	    Map<String, String> response = new HashMap<>();
+	        if (custService.register(userDto, file)) {
+	            response.put("message", "Successfully Registered");
+	            return new ResponseEntity<>(response, HttpStatus.OK);
+	        } else {
+	            response.put("message", "Registration failed");
+	            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+	        }
 	}
+
 
 	@PostMapping("/login")
 	public ResponseEntity<LoginResponse> authenticateAndGetTokenForCustomer(@RequestBody @Valid  LoginDTO loginDto) throws LoginCredentialsNotFound {
 		log.info("Request received to login: [Username:" + loginDto.getUsername() + ", Password: "
 				+ loginDto.getPassword()+" ]");
-		return ResponseEntity.ok().body(custService.login(loginDto.getUsername(), loginDto.getPassword()));
+		return new ResponseEntity<>(custService.login(loginDto.getUsername(), loginDto.getPassword()), HttpStatus.OK);
 	}
 	
 	@GetMapping("/checkEMI/{principal}/{rate}/{tenure}")
 	public ResponseEntity<Double> calculateEMI(@PathVariable(name="principal") double principal, @PathVariable(name= "rate") double rate, @PathVariable(name="tenure") int tenure) {
 		log.info("Calculating EMI for principal: "+principal+", rate: "+rate+", tenure: "+tenure);
-		return ResponseEntity.ok().body(loanService.emiCalculator(principal, rate, tenure));
+		return new ResponseEntity(loanService.emiCalculator(principal, rate, tenure), HttpStatus.OK);
 	}
 
 	@GetMapping("/dashboard")
 	public ResponseEntity<List<LoanType>> viewAllAvailableLoans() {
 		log.info("Customer is logged In");
-		return ResponseEntity.ok().body(loanTypeService.viewAvailableLoanType());
+		return new ResponseEntity(loanTypeService.viewAvailableLoanType(), HttpStatus.OK);
 	}
-
 }

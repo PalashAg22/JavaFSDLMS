@@ -49,16 +49,17 @@ export class ApplyLoanComponent implements OnInit {
 
     this.customerService.applyForLoan(this.loanApplicationRequest, this.file).subscribe(
       (response) => {
-        alert('Submitted successfully');
+        alert('Successfully applied for loan application');
         this.router.navigate(['customer/myLoans']);
       },
       (error) => {
+        console.log(error)
         if (error.status === 400 && error.error.includes('PropertyAlreadyExistException')) {
-          alert('Error: ' + error.message);
+          alert('Error: ' + error.error);
         } else if (error.status === 403 && error.error.includes('CustomerNotEligibleException')) {
-          alert('Error: ' + error.message);
+          alert('Error: ' + error.error);
         } else {
-          alert('Error: ' + error.message);
+          alert('Error: ' + error.error);
         }
       }
     );

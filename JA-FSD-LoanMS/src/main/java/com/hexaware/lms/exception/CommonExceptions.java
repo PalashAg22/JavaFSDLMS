@@ -29,4 +29,9 @@ public class CommonExceptions {
 		log.warn("Some Exception has Occurred....See the logs above and below.");
 		return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
 	}
+//	@ExceptionHandler({Exception.class})
+//	public ResponseEntity<String>handleLoginException(Exception e){
+//		log.warn("Some Exception has Occurred....See the logs above and below.");
+//		return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+//	}
 }

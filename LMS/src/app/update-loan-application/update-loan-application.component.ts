@@ -17,6 +17,7 @@ export class UpdateLoanApplicationComponent {
   loanId!:number;
   loanApplicationRequest = new LoanApplicationRequest();
   file!:File;
+  isValid:boolean = false;
   customer:User = this.userAuthService.getUser();
   loanType:LoanType [] = [];
 
@@ -33,6 +34,13 @@ export class UpdateLoanApplicationComponent {
   onFileUpload(data:any){
     this.file =data.target.files[0];
     console.log(this.file);
+    if(this.file && this.file.size > 1048576){
+      this.isValid = false;
+      alert('File size exceeds 1MB. Please upload a smaller file.');
+      data.target.value = '';   
+    }else{
+      this.isValid = true;
+    }
   }
   getData(data:any){
     console.log("Update LoanApplication: "+data);
@@ -47,17 +55,19 @@ export class UpdateLoanApplicationComponent {
      console.log(this.loanApplicationRequest); 
     this.customerService.updateAppliedLoan(this.loanApplicationRequest,this.file).subscribe(
       (Respose)=>{
-        alert("Successfully updated");
+        alert("Successfully updated loan application");
+        this.router.navigate(['customer/myLoans']);
       },
       (error) => {
-        if (error.status === 400 && error.error.includes('PropertyAlreadyExistException')) {
-          alert('Error: ' + error.message);
+        console.log(error)
+        if (error.status === 400) {
+          alert('Error: ' + error.error);
         } else{
           alert("Something went wrong. Please try again later.");
         }
+        this.router.navigate(['customer/myLoans']);
       }
     );
-    this.router.navigate(['customer/home']);
   }
-  
+    
 }
