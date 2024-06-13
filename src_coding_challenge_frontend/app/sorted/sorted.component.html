@@ -1,0 +1,14 @@
+<h1>Player Data</h1>
+  <table>
+    <tr>
+      <th>Player Name</th>
+      <th>Total Matches Played</th>
+      <th>Country</th>
+    </tr>
+   
+    <tr *ngFor="let player of players">
+      <td>{{ player[0] }}</td>
+      <td>{{ player[1] }}</td>
+      <td>{{player[2] }}</td>
+    </tr>
+  </table>

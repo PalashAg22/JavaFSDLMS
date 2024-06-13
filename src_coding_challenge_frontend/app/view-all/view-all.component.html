@@ -1,0 +1,29 @@
+<div class="container">
+    <table class="custom-table">
+        <tr>
+            <th>No.</th>
+            <th>Player ID</th>
+            <th>Player Name</th>
+            <th>Jersey Number</th>
+            <th>Role</th>
+            <th>Total Matches</th>
+            <th>Team Name</th>
+            <th>Country</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr> 
+        <tr *ngFor="let player of playerList; index as i">
+            <td>{{i+1}}</td>
+            <td>{{player.playerId}}</td>
+            <td>{{player.playerName}}</td>
+            <td>{{player.role}}</td>
+            <td>{{player.totalMatches}}</td>
+            <td>{{player.teamName}}</td>
+            <td>{{player.country}}</td>
+            <td>{{player.Description}}</td>
+            <td>{{player.jerseyNumber}}</td>
+            <td><button type="button" class="custom-btn" (click)="updateById(player.playerId)" >Update</button></td>
+            <td><button type="button" class="custom-btn" (click)="deleteById(player.playerId)">Delete</button></td>
+        </tr>
+    </table>
+</div>

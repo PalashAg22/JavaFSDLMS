@@ -1,0 +1,38 @@
+.navbar {
+    background-color: #333;
+    padding: 10px;
+  }
+  
+  .navbar-nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-item {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  .nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  .nav-link:hover {
+    color: #ccc;
+  }
+  
+  .search-box {
+    margin-left: auto;
+  }
+  
+  .search-box input[type="text"] {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    font-size: 14px;
+    width: 200px;
+  }
+  

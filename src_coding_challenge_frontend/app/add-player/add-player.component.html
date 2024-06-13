@@ -1,0 +1,36 @@
+<form #playerForm="ngForm" class="player-form" (ngSubmit)="formData(playerForm.value)">
+    <div class="form-group">
+      <label for="playerName">Player Name:</label>
+      <input type="text" id="playerName" name="playerName" ngModel required>
+    </div>
+    <div class="form-group">
+        <label for="jerseyNumber">Player Id:</label>
+        <input type="number" id="playerId" name="playerId"  ngModel required>
+      </div>
+    <div class="form-group">
+      <label for="jerseyNumber">Jersey Number:</label>
+      <input type="number" id="jerseyNumber" name="jerseyNumber"  ngModel required>
+    </div>
+    <div class="form-group">
+      <label for="role">Role:</label>
+      <input type="text" id="role" name="role" ngModel required>
+    </div>
+    <div class="form-group">
+      <label for="totalMatches">Total Matches:</label>
+      <input type="number" id="totalMatches" name="totalMatches" ngModel required>
+    </div>
+    <div class="form-group">
+      <label for="teamName">Team Name:</label>
+      <input type="text" id="teamName" name="teamName" ngModel required>
+    </div>
+    <div class="form-group">
+      <label for="country">Country:</label>
+      <input type="text" id="country" name="country" ngModel required>
+    </div>
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" ngModel required></textarea>
+    </div>
+    <button type="submit" [disabled]="playerForm.invalid">Submit</button>
+  </form>
+  
