@@ -26,8 +26,8 @@
 //		AdminDTO adminDto = new AdminDTO();
 //		adminDto.setAdminFirstName("Palash");
 //		adminDto.setAdminLastName("Agrawal");
-//		adminDto.setEmail("palash@hexaware.com");
-//		adminDto.setPassword("palash123");
+//		adminDto.setEmail("palash@gmail.com");
+//		adminDto.setPassword("abcde");
 //		log.info("Registering a new Admin: "+adminDto);
 //		assertTrue(testAdmin.register(adminDto));
 //	}
